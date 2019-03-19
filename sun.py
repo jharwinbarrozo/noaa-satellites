@@ -3,7 +3,7 @@ import ephem
 import time
 import sys
 
-date = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(sys.argv[1])+3*60*60))
+date = time.strftime('%Y-%m-%d %H:%M:%S')
 
 obs=ephem.Observer()
 obs.lat=''
