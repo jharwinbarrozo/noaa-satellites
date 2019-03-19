@@ -10,7 +10,6 @@ PREDICTION_END=$(/usr/bin/predict -t "${NOAA_HOME}"/predict/weather.tle -p "${1}
 
 
 var2=$(echo "${PREDICTION_END}" | cut -d " " -f 1)
-var21=`echo $PREDICTION_END | cut -d " " -f 1`
 
 MAXELEV=$(/usr/bin/predict -t "${NOAA_HOME}"/predict/weather.tle -p "${1}" | awk -v max=0 '{if($5>max){max=$5}}END{print max}')
 
