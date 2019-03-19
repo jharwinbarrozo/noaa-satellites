@@ -49,7 +49,7 @@ FOLDER_DATE="$(date +%Y)/$(date +%m)/$(date +%d)"
 timeout "${6}" /usr/local/bin/rtl_fm -f "${2}"M -s 60k -g $AMP_GAIN -p $PPM_CORR -E wav -E deemp -F 9 - | /usr/bin/sox -t raw -e signed -c 1 -b 16 -r 60000 - ${NOAA_AUDIO}/audio/"${3}".wav rate 11025
 
 PASS_START=$(expr "$5" + 90)
-SUN_ELEV=$(python2 sun.py $PASS_START)
+SUN_ELEV=$(python2 ${NOAA_HOME}/predict/sun.py $PASS_START)
 
 if [ ! -d ${NOAA_OUTPUT}/image/${FOLDER_DATE} ]; then
 	mkdir -p ${NOAA_OUTPUT}/image/${FOLDER_DATE}
