@@ -42,6 +42,7 @@ fi
 # $5 = EPOC start time
 # $6 = Time to capture
 # $7 = Satellite max elevation
+
 AMP_GAIN=45
 PPM_CORR=0
 START_DATE=$(date '+%d-%m-%Y %H:%M')
