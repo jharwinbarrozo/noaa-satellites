@@ -1,4 +1,4 @@
-# NOAA Satellite Automated Decode using Raspberry PI and RTL-SDR
+## NOAA Satellite Automated Decode using Raspberry PI and RTL-SDR
 
 - Schedule and create cron job for each satellite that meets requirements (set minimum elevation, default is 20)
 - Jobs will be created for the day at exactly 1 minute after midnight. (Check crontab -e)
