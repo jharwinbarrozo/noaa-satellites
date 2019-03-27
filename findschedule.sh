@@ -14,8 +14,6 @@ grep "METEOR-M 2" "${NOAA_HOME}"/predict/weather.txt -A 2 >> "${NOAA_HOME}"/pred
 #Remove all AT jobs
 for i in $(atq | awk '{print $1}');do atrm "$i";done
 
-# "APT" frequencies up to date as of: January 2019
-# for updates: http://phqfh.co.uk/status.htm
 #Schedule Satellite Passes:
 "${NOAA_HOME}"/predict/schedule_sat.sh "NOAA 15" 137.6200
 "${NOAA_HOME}"/predict/schedule_sat.sh "NOAA 18" 137.9125
