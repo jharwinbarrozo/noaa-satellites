@@ -3,6 +3,7 @@
 ## debug
 # set -x
 
+#This is configuration file
 . ~/.noaa.conf
 
 ## sane checks
