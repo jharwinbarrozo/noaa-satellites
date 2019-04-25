@@ -1,0 +1,97 @@
+sudo apt-get update && sudo apt-get -y upgrade
+sudo reboot now
+
+sudo raspi-config
+reboot now
+
+sudo apt-get install -y predict python-setuptools python-pip python-dev ntp cmake libusb-1.0 git sox at nginx libxft-dev ImageMagick
+
+sudo nano /etc/modprobe.d/no-rtl.conf
+copy:
+blacklist dvb_usb_rtl28xxu
+blacklist rtl2832
+blacklist rtl2830
+sudo cat /etc/modprobe.d/no-rtl.conf
+
+cd /tmp/
+git clone https://github.com/osmocom/rtl-sdr
+cd rtl-sdr/
+mkdir build
+cd build
+cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON
+make
+sudo make install
+sudo ldconfig
+cd /tmp/
+sudo cp ./rtl-sdr/rtl-sdr.rules /etc/udev/rules.d/
+sudo reboot now
+
+Test rtl:
+rtl_test -p1
+
+cd ~
+wget https://wxtoimgrestored.xyz/beta/wxtoimg-armhf-2.11.2-beta.deb
+sudo dpkg -i wxtoimg-armhf-2.11.2-beta.deb
+
+rtl_test -p1
+
+predict
+set QTH [G]
+Station Callsign  : DW2JHA                   
+Station Latitude  : 16.0775 [DegN]           
+Station Longitude : -120.356 [DegW]          
+Station Altitude  : 5 [m]
+
+wxtoimg
+#run it once, then YES to agree terms
+
+nano ~/.wxtoimgrc
+copy:
+Latitude: 16.0775
+Longitude: 120.3564
+Altitude: 5
+
+xwxtoimg
+
+cd ~
+git clone https://github.com/jharwinbarrozo/wx
+mkdir predict
+
+cd ~/wx
+cp receive-n-process.sh /home/pi/predict
+cp findschedule.sh /home/pi/predict
+cp predict-schedule_sat.sh /home/pi/predict
+cp sun-elev-calculation.py /home/pi/predict
+
+cd ~/predict
+chmod +x receive-n-process.sh
+chmod +x findschedule.sh
+chmod +x predict-schedule_sat.sh
+chmod +x sun-elev-calculation.py
+
+cd ~/wx
+mv .noaa.conf ~/.noaa.conf
+cd ~
+
+nano ~/.noaa.conf
+NOAA_HOME=/home/pi
+NOAA_OUTPUT=/home/pi/output
+NOAA_AUDIO=/home/pi/output/wav
+SAT_MIN_ELEV=19
+SUN_MIN_ELEV=15
+
+Location of python, to check if what version is installed - 
+/usr/local/lib/
+
+To check if what is default python version 
+python --version
+
+How to install pip and pyephem
+sudo apt-get install python-dev 
+sudo apt-get install python-pip #to install pip, so you can install pyephem
+sudo pip install pyephem
+
+To check if pip is installed:
+pip --version
+
+run /home/pi/predict/sun-elev-calculation.py to check if it’s running
