@@ -51,6 +51,10 @@ Latitude: 16.0775
 Longitude: 120.3564
 Altitude: 5
 
+Registration Name: Kevin Schuchmann
+Registration Email: jharwinbarrozo@gmail.com
+Registration Key: CGHZ-PP9G-EAJZ-AWKK-NDNX
+
 xwxtoimg
 
 cd ~
