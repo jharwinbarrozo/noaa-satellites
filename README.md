@@ -1,4 +1,4 @@
-## NOAA Satellite Automated Decode using Raspberry PI and RTL-SDR
+## WX Satellite Automated Decode using Raspberry PI and RTL-SDR
 
 This is fully automated raspbian platform decoding system for wx satellite. This is headless raspbian, it doesn't need screen or monitor. Once you're done setting this up, connect a QFH or turnstile antenna to your sdr-rtl dongle, then you just leave it there and make sure it's connected to internet to download TLE/keps from nasa server daily. And it will do everything automatically without any supervision, from scheduling of satellites to get exact EPOC time and running WXToIMG and sox simultenously. Recorded apt wav audio is also available for each pass.
 
